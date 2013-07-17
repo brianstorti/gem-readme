@@ -6,7 +6,7 @@ class Gem::Commands::ReadmeCommand < Gem::Command
           "Open the README file of a given gem",
           latest: true,
           version: Gem::Requirement.default,
-          editor: ENV['EDITOR'] || "less")
+          editor: ENV['README_EDITOR'] || ENV['REDAME'] || "less")
 
     add_version_option
   end
