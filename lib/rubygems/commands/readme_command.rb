@@ -1,21 +1,15 @@
 class Gem::Commands::ReadmeCommand < Gem::Command
-  include Gem::VersionOption
-
   def initialize
     super("readme",
           "Open the README file of a given gem",
-          latest: true,
-          version: Gem::Requirement.default,
-          editor: ENV['README_EDITOR'] || ENV['EDITOR'] || "less")
-
-    add_version_option
+          editor: ENV["README_EDITOR"] || ENV["EDITOR"] || "less")
   end
 
   def execute
     gem_specification = get_gem_specification
 
     if gem_specification.nil?
-      say "Gem '#{gem_name}' not found."
+      say "Gem not found."
       raise Gem::SystemExitException, 1
     end
 
