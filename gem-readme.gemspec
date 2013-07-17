@@ -1,11 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'rubygems/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "gem-readme"
-  spec.version       = Rubygems::VERSION
+  spec.version       = "0.0.1"
   spec.authors       = ["Brian Thomas Storti"]
   spec.email         = ["btstorti@gmail.com"]
   spec.description   = %q{Read a gem's README file directlty in your terminal}
