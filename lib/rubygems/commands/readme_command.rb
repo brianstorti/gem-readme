@@ -3,10 +3,11 @@ class Gem::Commands::ReadmeCommand < Gem::Command
 
   def initialize
     super 'readme', 'Open the README file of a given gem',
-      :command => nil,
-      :version => Gem::Requirement.default,
-      :latest  => false,
-      :all     => false
+      command: nil,
+      version: Gem::Requirement.default,
+      latest: false,
+      all: false,
+      editor: ENV['EDITOR'] || "less"
 
     add_version_option
   end
@@ -29,6 +30,9 @@ class Gem::Commands::ReadmeCommand < Gem::Command
     end
 
     gem_path = gem_specification.full_gem_path
-    exec "#{options[:editor]} $(find #{gem_path} -type f -iname 'readme.*')"
+
+    cmd = "#{options[:editor]} $(find #{gem_path} -type f -iname 'readme.*')"
+    say cmd
+    system cmd
   end
 end
