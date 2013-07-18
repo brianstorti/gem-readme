@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "gem-readme"
-  spec.version       = "1.0.0"
+  spec.version       = "1.0.1"
   spec.authors       = ["Brian Thomas Storti"]
   spec.email         = ["btstorti@gmail.com"]
   spec.description   = %q{Read a gem's README file directlty in your terminal}
