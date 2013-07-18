@@ -1,29 +1,22 @@
-# Gem::Readme
+# gem-readme
 
-TODO: Write a gem description
+Your gems' README, right in your terminal, 'cuz life is too short to be wasted in a browser.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'gem-readme'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install gem-readme
+As simples as it can be: `gem install gem-readme`
 
 ## Usage
 
-TODO: Write usage instructions here
+Just type `gem readme [GEMNAME]` in your terminal. If you have multiple versions of this gem installed, you can choose the specific version.  
+Your `$README_EDITOR`, `$EDITOR` or `less` will be opened with the desired README file.
 
-## Contributing
+## License
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Copyright (c) 2013 Brian Thomas Storti
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
