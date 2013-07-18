@@ -11,6 +11,10 @@ As simples as it can be: `gem install gem-readme`
 Just type `gem readme [GEMNAME]` in your terminal. If you have multiple versions of this gem installed, you can choose the specific version.  
 Your `$README_EDITOR`, `$EDITOR` or `less` will be opened with the desired README file.
 
+## Requirements
+
+Ruby 1.9.x or newer
+
 ## License
 
 Copyright (c) 2013 Brian Thomas Storti
