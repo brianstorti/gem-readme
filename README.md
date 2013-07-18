@@ -4,7 +4,7 @@ Your gems' README, right in your terminal, 'cuz life is too short to be wasted i
 
 ## Installation
 
-As simples as it can be: `gem install gem-readme`
+As simple as it can be: `gem install gem-readme`
 
 ## Usage
 
