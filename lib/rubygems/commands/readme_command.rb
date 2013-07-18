@@ -35,7 +35,7 @@ class Gem::Commands::ReadmeCommand < Gem::Command
     end
 
     print ">> "
-    index = STDIN.gets.to_i
+    index = STDIN.getc.to_i
     gem_specifications[index]
   end
   private :ask_for_specific_version
