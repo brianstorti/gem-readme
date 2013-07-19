@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["btstorti@gmail.com"]
   spec.description   = %q{Read a gem's README file directlty in your terminal}
   spec.summary       = %q{Read a gem's README file directlty in your terminal}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/brianstorti/gem-readme"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
