@@ -14,7 +14,7 @@ class Gem::Commands::ReadmeCommand < Gem::Command
     end
 
     gem_path = gem_specification.full_gem_path
-    system "#{options[:editor]} $(find #{gem_path} -type f -iname 'readme.*')"
+    system "#{options[:editor]} $(find #{gem_path} -type f -iname 'readme*' -depth 1)"
   end
 
   def get_gem_specification
