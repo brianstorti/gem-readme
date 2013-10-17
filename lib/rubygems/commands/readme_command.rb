@@ -20,7 +20,8 @@ class Gem::Commands::ReadmeCommand < Gem::Command
     end
 
     gem_path = gem_specification.full_gem_path
-    readme = Dir.glob(File.join(gem_path, "readme*"), File::FNM_CASEFOLD).first
+    readme = Dir.glob(File.join(gem_path, "readme*"),
+                      File::FNM_CASEFOLD).first
 
     show readme if readme
   end
@@ -36,11 +37,15 @@ class Gem::Commands::ReadmeCommand < Gem::Command
     else
       show_plain path
     end
+  rescue => e
+    # If rendering is failed, show readme as plain text.
+    $stderr.puts e
+    show_plain path
   end
 
   def show_markdown(path)
     date = File.ctime(path)
-    doc = Ronn::Document.new(path, {"date" => date})
+    doc = Ronn::Document.new(path, { "date" => date })
     show_roff doc.convert("roff")
   end
 
@@ -49,20 +54,21 @@ class Gem::Commands::ReadmeCommand < Gem::Command
     rdoc = ROFFHtmlMarkup.new(RDoc::Options.new)
     source = File.read(path)
     doc  = rdoc.parse(source)
-    heading = doc.select{|item| item.respond_to?(:level) && item.level == 1}.first
+    heading = doc.select { |i| i.respond_to?(:level) && i.level == 1 }.first
     name, section, tagline = sniff(heading.text)
     show_roff create_roff(rdoc.convert(source),
                           name, section, tagline, date: date)
   end
 
+  # code from Ronn::Document#sniff
   def sniff(heading)
     case heading
-    when /([\w_.\[\]~+=@:-]+)\s*\((\d\w*)\)\s*-+\s*(.*)/
-      [$1, $2, $3]
-    when /([\w_.\[\]~+=@:-]+)\s+-+\s+(.*)/
-      [$1, nil, $3]
+    when /([\w.\[\]~+=@:-]+)\s*\((\d\w*)\)\s*-+\s*(.*)/
+      [Regexp.last_match(1), Regexp.last_match(2), Regexp.last_match(3)]
+    when /(?<name>[\w.\[\]~+=@:-]+)\s+-+\s+(?<tag>.*)/
+      [Regexp.last_match(1), nil, Regexp.last_match(2)]
     else
-      [nil, nil, $1]
+      [nil, nil, heading]
     end
   end
 
@@ -90,7 +96,7 @@ class Gem::Commands::ReadmeCommand < Gem::Command
   # Create roff from html
   def create_roff(html, name, section, tagline,
                   manual: nil, version: nil, date: nil)
-    html = html.gsub(/<\/{0,1}(hr).+?>/, '')
+    html.gsub!(/<\/{0,1}(hr).+?>/i, '')
     Ronn::RoffFilter.new(html, name, section, tagline,
                          manual, version, date).to_s
   end
@@ -108,7 +114,9 @@ class Gem::Commands::ReadmeCommand < Gem::Command
 
   def get_gem_specification
     gem_name, _ = options[:args]
-    specifications = Gem::Specification.each.select { |spec| spec.name == gem_name }
+    specifications = Gem::Specification.each.select do |spec|
+      spec.name == gem_name
+    end
 
     return if specifications.empty?
     return specifications.first if specifications.size == 1
@@ -135,5 +143,4 @@ class Gem::Commands::ReadmeCommand < Gem::Command
        @res << "</h#{level}>\n"
     end
   end
-
 end
